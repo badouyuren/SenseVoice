@@ -78,3 +78,6 @@ async def turn_audio_to_text(files: Annotated[List[bytes], File(description="wav
         it["clean_text"] = re.sub(regex, "", it["text"], 0, re.MULTILINE)
         it["text"] = rich_transcription_postprocess(it["text"])
     return {"result": res[0]}
+    
+if __name__ == '__main__':
+    uvicorn.run(app, host='0.0.0.0', port=2002)
